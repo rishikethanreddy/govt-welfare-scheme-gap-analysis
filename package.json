@@ -5,13 +5,9 @@
   "scripts": {
     "dev": "concurrently -k -p \"[{name}]\" -n \"UI,API,WRK\" -c \"cyan.bold,green.bold,magenta.bold\" \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:worker\"",
     "dev:frontend": "npm --prefix frontend run dev",
-    "dev:backend": "uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload",
-    "dev:worker": "python -m backend.worker",
-    "dev:win": "concurrently -k -p \"[{name}]\" -n \"UI,API,WRK\" -c \"cyan.bold,green.bold,magenta.bold\" \"npm run dev:frontend\" \"npm run dev:backend:win\" \"npm run dev:worker:win\"",
-    "dev:backend:win": ".\\venv\\Scripts\\uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload",
-    "dev:worker:win": ".\\venv\\Scripts\\python -m backend.worker",
-    "seed": "python -m backend.app.seed",
-    "seed:win": ".\\venv\\Scripts\\python -m backend.app.seed"
+    "dev:backend": "node scripts/run-python.js -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload",
+    "dev:worker": "node scripts/run-python.js -m backend.worker",
+    "seed": "node scripts/run-python.js -m backend.app.seed"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

@@ -242,17 +242,13 @@ First, install the root orchestration utility (one time):
 npm install
 ```
 
-Then start Frontend + Backend + Background Worker concurrently:
+Then start Frontend + Backend + Background Worker concurrently (automatically detects your `venv` on Windows, macOS, and Linux):
 
-**On Windows:**
-```bash
-npm run dev:win
-```
-
-**On macOS / Linux (with virtual environment activated):**
 ```bash
 npm run dev
 ```
+
+> **Note:** `npm run dev` uses the built-in runner (`scripts/run-python.js`) which automatically directs Python execution through your local virtual environment (`venv`), so you don't even need to worry about path differences or manual virtualenv activation!
 
 ---
 
